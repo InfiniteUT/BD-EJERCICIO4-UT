@@ -7,13 +7,12 @@ class ConectarBD {
 
     async conectarMySql() {
         try {
-            console.log('Intentando conectar a MySQL con los siguientes datos:');
-            console.log({
-                host: "localhost",
-                user: "root",
-                password: "root",
-                database: "universidad",
-                port: 3306
+            this.conexion = await this.mysql.createConnection({
+                host: process.env.HOSTMYSQL,
+                user: process.env.USERMYSQL,
+                password: process.env.PASSWORDMYSQL,
+                database: process.env.DATABASEMYSQL,
+                port: process.env.PORTMYSQL || 3306
             });
 
             console.log("Conectado a MySql");
